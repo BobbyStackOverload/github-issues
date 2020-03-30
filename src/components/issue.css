@@ -1,0 +1,27 @@
+.issueBody {
+    display: block;
+    width: 600px;
+    background-color: rgb(216, 216, 216);
+    border: rgb(0, 0, 0) 6px double;
+    box-shadow: 8px 8px 8px rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+.props {
+    color: black;
+}
+
+.allIssues {
+    margin: 10px;
+    width: 700px;
+    background-color: rgb(242, 174, 174);
+    border: grey 2px double;
+    box-shadow: 8px 8px 8px rgb(0, 0, 0);
+}
+
+.text {
+    margin-left: 20px;
+    width: 550px;
+    font-size: 10px;
+    
+}
