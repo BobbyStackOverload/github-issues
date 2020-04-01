@@ -1,13 +1,22 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Issue from './components/Issue';
+import IssueList from './components/IssueList';
+import './components/issue.css';
 import './App.css';
-import IssueList from './components/IssueList'
+
+
 
 function App() {
 
   return (
     <div className="App">
       <h1>2020 List of GitHub Issues</h1>      
-        <IssueList/>
+        <Router>
+          <Route path='/' exact component={IssueList} />
+          <Route path='/issue/:issue_number?' component={Issue} />
+        </Router>
+  
 
     </div>
   );

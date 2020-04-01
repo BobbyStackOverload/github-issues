@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Issue from './Issue';
+import { Link } from 'react-router-dom';
 import './issue.css';
+
 
 class IssueList extends Component {
     constructor(props) {
@@ -26,13 +27,18 @@ class IssueList extends Component {
         const { issues } = this.state;
     
         return (
-            <div className="allIssues">
+            // <div className="allIssues">
                 <ul>
-                {issues.map(value => (
-                    <Issue key={value.id} issue={value} />
+                {issues.map(issue => (
+                  <div key={issue.id}>
+                      <h1>Issue Title: </h1>
+                  {issue.title}
+                  <Link to={`/issue/${issue.number}`}>See More Details</Link>
+                  </div>
+                    // <Issue key={value.id} issue={value} />
                 ))}
                 </ul>                
-            </div>
+            // </div>
 
         );
       }

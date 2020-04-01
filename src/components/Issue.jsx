@@ -1,20 +1,41 @@
-import React from 'react';
-import './issue.css';
+import React, { Component } from 'react';
+import ReactMarkdown from 'react-markdown';
 
-const Issue = (props) => {
+class Issue extends Component {
+   constructor(props) {
+       super(props);
+       this.state = {
+           issues: []
+       };
+   } 
 
-    return (
-        <div className="issueBody">
-            <h3>Issue:</h3>
-            <div className="props">
-                {props.issue.title}
+
+    componentDidMount() {
+        const number = this.props.match.params.issue_number;
+        fetch(`https://api.github.com/repos/facebook/create-react-app/issues/${number}`)
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                    issues: result
+                }); 
+            });
+    }
+
+    render() {
+        const data = this.state.issues;
+        console.log("data");
+        return (
+            <div> 
+                <div> 
+                    <h3>{data.title}</h3>
+                </div>
+                <div>
+                    <ReactMarkdown source={data.body} escapeHtml={false}/>
+                </div>
             </div>
-
-            <h3><a href={props.issue.html_url}>Issue Link</a></h3>
-            <hr />            
-            <div className="text">{props.issue.body}</div>
-        </div>
-    )
+        )
+    }
 }
+
 
 export default Issue;
